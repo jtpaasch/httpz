@@ -64,7 +64,7 @@ type Reason = String
 type Message = LB.ByteString
 type Status = B.ByteString
 type EncodedJSON = LB.ByteString
-type QueryParameter = [(T.Text, T.Text)]
+type QueryParameter = (T.Text, T.Text)
 
 {- | The different types of errors that can arise during a request. -}
 data Error
