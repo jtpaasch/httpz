@@ -127,7 +127,7 @@ post () = do
     Left e -> return $ Left (show e)
     Right r -> return $ Right (show r)
 
-{- | An example of making a PUT' request. -}
+{- | An example of making a PUT request. -}
 put :: () -> IO (Either String String)
 put () = do
 
@@ -150,7 +150,7 @@ put () = do
     Left e -> return $ Left (show e)
     Right r -> return $ Right (show r)
 
-{- | An example of making a 'DELETE' request. -}
+{- | An example of making a DELETE request. -}
 delete :: () -> IO (Either String String)
 delete () = do
 

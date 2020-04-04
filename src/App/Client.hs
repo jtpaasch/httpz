@@ -15,14 +15,14 @@ module App.Client
 
 {-
 
-| This is a wrapper around the Haskell 'Network,HTTP.Req' library.
+| This is a wrapper around the Haskell 'Network.HTTP.Req' library.
 
 It provides utilities for making basic HTTP requests. To make a request,
 the work flow is this:
 
 1. Build an 'App.Client.Request' record, which contains 
    a request method (GET, POST, etc), a request URL, an optional 
-   request BODY, and an optional set of query parameters.
+   request body, and an optional set of query parameters.
    This record represents the request you want to make.
 
 2. Call 'App.Client.run request', where 'request' is your request
@@ -35,16 +35,16 @@ the work flow is this:
 
 Note in particular:
 
-* Safe URLs are built using the 'Req' libraries 'http', 'https', 
+* Safe URLs are built using the 'Req' library's 'http', 'https', 
   and '/:' functions.
 
-* The body of requests must be encoded JSON, so they are byte strings.
+* The body of requests must be encoded JSON, i.e., a byte string.
   The response is decoded into an 'Aeson' 'Value' for you though.
   So encoded JSON goes in, and decoded JSON comes out.
 
-* Query parameters are specified as a list of key, value pairs,
-  where both the key and the value are 'Text'. If you want to pass
-  a number, convert it into text before you send it.
+* Query parameters are specified as a list of key/value pairs,
+  where both the key and the value are 'Text' (so convert your
+  values into text).
 
 -}
 
@@ -101,8 +101,8 @@ data Response = Response
   , responseBody :: J.Value
   } deriving (Show)
 
--- Used internally to retrieve the status code/message from an
--- 4XX/5XX error thrown by 'Req'.
+-- Used internally to retrieve the status code/message from
+-- a 404/5XX error thrown by 'Req'.
 getStatus :: C.Response () -> (Code, Status)
 getStatus r =
   let s = C.responseStatus r
